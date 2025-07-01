@@ -1,3 +1,5 @@
+import pdb
+
 import scipy.io
 import urllib.request
 import dgl
@@ -120,6 +122,7 @@ def preprocess_kg(path, split, test_size = 0.05, one_hop = False, mask_ratio = 0
             undirected_index.append(d_off[d_off.x_type == d_off.x_type.iloc[0]].index.values.tolist())
     flat_list = [item for sublist in undirected_index for item in sublist]
     df = df[df.index.isin(flat_list)]
+    pdb.set_trace()
     unique_node_types = np.unique(np.append(np.unique(df.x_type.values), np.unique(df.y_type.values)))
 
     df['x_idx'] = np.nan
